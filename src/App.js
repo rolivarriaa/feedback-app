@@ -1,39 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import FeedbackItem from "./components/FeedbackItem";
+import FeedbackList from "./components/FeedbackList";
+import Header from "./components/Header";
+import Card from "./components/shared/Card";
+import FeedbackData from "./data/FeedbackData";
 
 function App() {
-  const title = "Titulo de la página";
-  const cars = ["honda", "bmw", "chevrolet", "vw"];
-
-  const loading = false;
-  const showComments = true;
-
-  const comments = [
-    {
-      id: 1,
-      text: "comentario #1",
-    },
-    {
-      id: 2,
-      text: "comentario #2",
-    },
-    {
-      id: 3,
-      text: "comentario #3",
-    },
-  ];
+  const title = "My App";
+  const [feedback, setFeedback] = useState(FeedbackData);
 
   return (
     <>
       <div>
-        <h1 className="title">{title.toUpperCase()}</h1>
-        <h3>Total de comentarios ({comments.length})</h3>
-        {showComments && (
-          <ul>
-            {comments.map((comment, index) => (
-              <li key={index}> {comment.text} </li>
-            ))}
-          </ul>
-        )}
+        <Header />
+        <FeedbackList feedback={feedback} />
       </div>
     </>
   );
