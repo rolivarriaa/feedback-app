@@ -236,3 +236,11 @@ input:focus {
     width: 80%;
   }
 }
+
+.active {
+  font-weight: bold;
+}
+
+a {
+  padding: 10px;
+}

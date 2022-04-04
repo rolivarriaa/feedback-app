@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
 import FeedbackForm from "./components/FeedbackForm";
 import FeedbackItem from "./components/FeedbackItem";
 import FeedbackList from "./components/FeedbackList";
@@ -7,35 +13,47 @@ import Header from "./components/Header";
 import Card from "./components/shared/Card";
 import FeedbackData from "./data/FeedbackData";
 import { v4 as uuidv4 } from "uuid";
+import AboutPage from "./pages/AboutPage";
+import AboutIconLink from "./components/AboutIconLink";
+import Post from "./components/Post";
+import { FeedbackProvider } from "./context/FeedbackContext";
 
 function App() {
   const title = "My App";
-  const [feedback, setFeedback] = useState(FeedbackData);
-  const addFeedback = (newFeedback) => {
-    // newFeedback.id = uuidv4();
-    newFeedback.id = Math.random();
-    setFeedback([newFeedback, ...feedback]);
-
-    console.log(feedback);
-  };
-
-  const deleteFeedback = (id) => {
-    if (window.confirm("Are you sure you want to delete?")) {
-      setFeedback(feedback.filter((item) => item.id !== id));
-    }
-  };
 
   return (
-    <>
-      <div>
+    <FeedbackProvider>
+      <Router>
         <Header />
         <div className="container">
-          <FeedbackForm handleAdd={addFeedback} />
-          <FeedbackStats feedback={feedback} />
-          <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <>
+                  <FeedbackForm />
+                  <FeedbackStats />
+                  <FeedbackList />
+                </>
+              }
+            ></Route>
+
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/post/:id/:name" element={<Post />} />
+          </Routes>
+          <Card>
+            <NavLink to="/" activeClassnaME="active">
+              Home
+            </NavLink>
+            <NavLink to="/about" activeClassnaME="active">
+              About
+            </NavLink>
+          </Card>
+          <AboutIconLink />
         </div>
-      </div>
-    </>
+      </Router>
+    </FeedbackProvider>
   );
 
   //   return React.createElement(
