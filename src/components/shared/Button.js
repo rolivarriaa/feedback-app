@@ -1,5 +1,4 @@
-import React, { Children } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 function Button({ children, version, type, isDisabled }) {
   return (
