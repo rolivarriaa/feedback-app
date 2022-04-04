@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,21 +5,17 @@ import {
   NavLink,
 } from "react-router-dom";
 import FeedbackForm from "./components/FeedbackForm";
-import FeedbackItem from "./components/FeedbackItem";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
 import Header from "./components/Header";
 import Card from "./components/shared/Card";
-import FeedbackData from "./data/FeedbackData";
-import { v4 as uuidv4 } from "uuid";
+
 import AboutPage from "./pages/AboutPage";
 import AboutIconLink from "./components/AboutIconLink";
 import Post from "./components/Post";
 import { FeedbackProvider } from "./context/FeedbackContext";
 
 function App() {
-  const title = "My App";
-
   return (
     <FeedbackProvider>
       <Router>
