@@ -20,6 +20,7 @@ export const FeedbackProvider = ({ children }) => {
     const response = await fetch(`/feedback?_sort=id&_order=desc`);
     const data = await response.json();
     setFeedback(data);
+    setIsLoading(false);
   };
 
   // delete feedback
@@ -81,6 +82,7 @@ export const FeedbackProvider = ({ children }) => {
         editFeedback,
         feedbackEdit,
         updateFeedback,
+        isLoading,
       }}
     >
       {children}
