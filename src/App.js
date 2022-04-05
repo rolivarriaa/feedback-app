@@ -38,10 +38,10 @@ function App() {
             <Route path="/post/:id/:name" element={<Post />} />
           </Routes>
           <Card>
-            <NavLink to="/" activeClassnaME="active">
+            <NavLink to="/" activeclassname="active">
               Home
             </NavLink>
-            <NavLink to="/about" activeClassnaME="active">
+            <NavLink to="/about" activeclassname="active">
               About
             </NavLink>
           </Card>
